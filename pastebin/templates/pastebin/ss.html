@@ -3,8 +3,11 @@
 <div class="container">
     <div style="text-align: center">
        <h1 style="margin-top: 4em;"> SUCCESSFULLY SUBMITTED!<h1>
+            {% for items in form %}
 
-        your url is : {{ form.url }}
+
+        your url is : {{items.url}}
+        {% endfor %}
 </div>
 
 </div>

@@ -21,7 +21,7 @@ def main_page(request):
 
         if form.is_valid():
             form.save()
-            return render(request,"pastebin/ss.html",{"form":form, }) 
+            return render(request,"pastebin/ss.html",{"form":form }) 
             
         else:
             print("error")    
