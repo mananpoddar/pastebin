@@ -14,6 +14,7 @@ from datetime import datetime
 
 
 
+
 def main_page(request):
     form=input()
     if request.method=="POST":
@@ -21,7 +22,8 @@ def main_page(request):
 
         if form.is_valid():
             form.save()
-            return render(request,"pastebin/ss.html",{"form":form }) 
+            var = paste.objects.all()
+            return render(request,"pastebin/ss.html",{"form":form,"all_objects":var }) 
             
         else:
             print("error")    
