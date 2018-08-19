@@ -1,0 +1,38 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Event Entry</title>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+        <style> 
+        </style>
+    </head>
+    <body>
+<div class="container">
+<div class="row">
+  <div class="col-sm-8">
+          <h1 style="font-family: cursive">now sharing your text with us becomes easy..</h1><br>
+            <form class="form-horizontal" action="/pastebin/main_page/" method="POST">
+                
+                {% csrf_token %}
+       {{ form.non_field_errors }}
+        <div class="container" style="font-family: cursive">
+            your text:<br>{{form.content }}<br><br>
+            <url:>
+             <em>&nbsp;</em><br><br>
+      
+                <input class="btn btn-primary" type="submit" value="Submit">   
+            </form>   
+  </div>
+     <div class="col-sm-4">
+<img style="margin-top: 10em;" src="{% static "blog/ev3.jpg" %}">
+     </div>
+  </div>
+</div>
+
+
+
+    </body>
+</html>
