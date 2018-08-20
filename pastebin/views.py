@@ -21,12 +21,14 @@ def main_page(request):
         form=input(request.POST)
 
         if form.is_valid():
-            form.save()
-            var1=request.POST.get("url")
-
-            var = paste.objects.get(pk = var1)
-            return render(request,"pastebin/ss.html",{"form":form,"var":var,"var1":var1 }) 
+            latest_model= form.save()
+            var3=latest_model.url
+            return render(request,"pastebin/ss.html",{"form":form,"var3":var3 }) 
             
         else:
             print("error")    
     return render(request,"pastebin/paste.html",{"form":form }) 
+
+def content_fetch(request,url_no):
+    content_object=paste.objects.get(pk = url_no)
+    return render(request,"pastebin/fetching_content.html",{"content_object":content_object }) 

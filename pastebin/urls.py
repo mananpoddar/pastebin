@@ -5,6 +5,8 @@ app_name = "pastebin"
 urlpatterns = [
    
     url(r'^main_page/', views.main_page, name='main_page'),
+    url(r'^(?P<url_no>[0-9]+)/$', views.content_fetch, name='content'),
+
    
    
    
