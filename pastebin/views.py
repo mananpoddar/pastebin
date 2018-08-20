@@ -22,8 +22,10 @@ def main_page(request):
 
         if form.is_valid():
             form.save()
-            var = paste.objects.all()
-            return render(request,"pastebin/ss.html",{"form":form,"all_objects":var }) 
+            var1=request.POST.get("url")
+
+            var = paste.objects.get(pk = var1)
+            return render(request,"pastebin/ss.html",{"form":form,"var":var,"var1":var1 }) 
             
         else:
             print("error")    
