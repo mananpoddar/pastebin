@@ -14,9 +14,10 @@
 <div class="row">
   <div class="col-sm-8">
           <h1 style="font-family: cursive">now sharing your text with us becomes easy..</h1><br>
-            <form class="form-horizontal" action="/pastebin/main_page/" method="POST">
-            <a href="http://localhost:8000/pastebin/user_login/">login<br></a>
-                <a href="http://localhost:8000/pastebin/user_signup/">signup<br></a>
+            <form class="form-horizontal" action="/pastebin/main_loggedin_page/" method="POST">
+            <a href="http://localhost:8000/pastebin/user_logout/">logout<br></a>
+
+                <div>hello </div>
                 {% csrf_token %}
        {{ form.non_field_errors }}
         <div class="container" style="font-family: cursive">
@@ -28,6 +29,7 @@
             </form>   
   </div>
      <div class="col-sm-4">
+<img style="margin-top: 10em;" src="{% static "blog/ev3.jpg" %}">
      </div>
   </div>
 </div>

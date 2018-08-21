@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "pastebin/base.html" %}
 {% block main_content %}
 
 <!--
@@ -83,13 +83,13 @@
 <div class="container">
     <div style="text-align: center">
        <h1 style="margin-top: 4em;"> SUCCESSFULLY REGISTERED!<h1>
-    <a href="http://127.0.0.1:8000/polls/main_page/" type="button" class="btn btn-primary"  > Go to Main Page!</a>
+    <a href="http://127.0.0.1:8000/pastebin/main_page/" type="button" class="btn btn-primary"  > Go to Main Page!</a>
 </div>
 
 {% else %}
 <div class="container">
     <h1>Sign Up! </h1><BR>
-<form method="POST" nonvalidate action="/polls/signup/" enctype="multipart/form-data">{% csrf_token %}
+<form method="POST" nonvalidate action="/pastebin/user_signup/" enctype="multipart/form-data">{% csrf_token %}
   {% csrf_token %}
 
   {% for hidden_field in auth.hidden_fields %}
@@ -129,7 +129,7 @@
     </div>
   {% endfor %}
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit </button>
 </form>
 </div>
 

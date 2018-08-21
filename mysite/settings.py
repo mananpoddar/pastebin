@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pastebin.apps.PastebinConfig',
+    'widget_tweaks',
+
 
 ]
 
@@ -52,6 +54,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+LOGIN_URL="/pastebin/user_login"
+
 
 TEMPLATES = [
     {

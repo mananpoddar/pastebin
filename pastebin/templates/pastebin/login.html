@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "pastebin/base.html" %}
 {% block main_content %}
 
                 
@@ -7,7 +7,7 @@
 
       <div class="container">
 <h1 style="font-family: cursive; margin-left: 10em;">  Login Here! </h1><br>
-<form class="form-horizontal" action="{% url "blog:user_login" %}" method="POST">
+<form class="form-horizontal" action="{% url "pastebin:user_login" %}" method="POST">
     {% csrf_token %}
     
     <div class="form-group">
