@@ -82,8 +82,8 @@ def main_loggedin_page(request):
     if request.method=="POST":
         form=input_logged_in(request.POST)
      #   print(form)
-       # obj=form.save(commit=False)
-       # obj.owner=username
+        obj=form.save(commit=False)
+        obj.owner=username
       #  print(obj)
 
 
