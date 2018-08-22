@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from pastebin.models import paste,paste_logged_in
 from datetime import datetime
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 
 
 
@@ -19,7 +21,6 @@ def main_page(request):
     form=input()
     if request.method=="POST":
         form=input(request.POST)
-        print(form)
 
         if form.is_valid():
             latest_model=form.save()
@@ -32,7 +33,11 @@ def main_page(request):
 
 def content_fetch(request,url_no):
     content_object=paste.objects.get(pk = url_no)
-    return render(request,"pastebin/fetching_content.html",{"content_object":content_object }) 
+    return render(request,"pastebin/fetching_content.html",{"content_object":content_object })
+
+def content_fetch_logged_in(request,url_no):
+    content_object=paste_logged_in.objects.get(pk = url_no)
+    return render(request,"pastebin/fetching_content_logged_in.html",{"content_object":content_object }) 
 
 
 def user_signup(request):
@@ -73,31 +78,30 @@ def user_login(request):
         return render(request,"pastebin/login.html",{})
 @login_required
 def main_loggedin_page(request):
-   # username = None
-    username = request.user.username
-    # if request.user.is_authenticated():
-    print(username)
-    # print(username)
-    form=input_logged_in()
-    if request.method=="POST":
+   form=input_logged_in()
+
+   usernam=request.user.username
+   var=form.save(commit=False)
+   var.owner=usernam
+   mypaste=paste_logged_in.objects.filter(owner=usernam)
+   if request.method=="POST":
         form=input_logged_in(request.POST)
-     #   print(form)
-        obj=form.save(commit=False)
-        obj.owner=username
-      #  print(obj)
-
-
+        var=form.save(commit=False)
+        var.owner=usernam
         if form.is_valid():
-          #  latest_model1= form.save(commit=False)
-            latest_model= form.save()
+            latest_model=form.save()
             var3=latest_model.url
-            return render(request,"pastebin/ss_logged_in.html",{"form":form,"var3":var3,"username":username}) 
-            
-        else:
-            print("error")    
-    return render(request,"pastebin/paste_loggedin.html",{"form":form, }) 
+            return render(request,"pastebin/ss_logged_in.html",{"form":form,"var3":var3,"username":usernam}) 
+              
+   return render(request,"pastebin/paste_loggedin.html",{"form":form,"username":usernam ,"mypaste":mypaste}) 
 
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse("pastebin:main_page",))
+
+
+class pasteupdate(UpdateView):
+    model = input
+    fields = ['content', ]
+    template_name_suffix = '_update'

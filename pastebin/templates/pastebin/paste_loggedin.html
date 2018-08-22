@@ -12,11 +12,16 @@
     <body>
 <div class="container">
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-8"><br>welcome {{username}}
           <h1 style="font-family: cursive">now sharing your text with us becomes easy..</h1><br>
+
+          <br><div>
+            {% for items in mypaste %} 
+            {{items.content}} <br>
+            
+            {% endfor %}</div>
             <form class="form-horizontal" action="/pastebin/main_loggedin_page/" method="POST">
             <a href="http://localhost:8000/pastebin/user_logout/">logout<br></a>
-
                 <div>hello </div>
                 {% csrf_token %}
        {{ form.non_field_errors }}
