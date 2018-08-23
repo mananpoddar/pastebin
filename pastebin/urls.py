@@ -12,7 +12,9 @@ urlpatterns = [
     url(r'^user_signup/', views.user_signup, name='user_signup'),
     url(r'^main_loggedin_page/', views.main_loggedin_page, name='main_loggedin_page'),
     url(r'^user_logout/', views.user_logout, name='user_logout'),
-    url(r'^(?P<pk>[0-9]+)/update/', views.pasteupdate.as_view(), name='paste_update'),
+    url(r'^(?P<pk>[0-9]+)/edit/', views.paste_edit, name='paste_edit'),
+    url(r'^(?P<pk>[0-9]+)/edit_logged_in/', views.paste_edit_logged_in, name='paste_edit_logged_in'),
+
 
 
 

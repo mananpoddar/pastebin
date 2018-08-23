@@ -1,12 +1,29 @@
 {% extends "pastebin/base.html" %}
 {% block main_content %}
 
-                
+<nav class="navbar navbar-default" >
+    <div class="container">
+    <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                  </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+     <li>  <a href="#!" class="active">welcome {{username}}</a>    </li>
+
+
+    
+     </ul> 
+    </div>
+</nav>
       
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
       <div class="container">
-<h1 style="font-family: cursive; margin-left: 10em;">  Login Here! </h1><br>
+<h1 style=" text-align: center">  Login Here! </h1><br>
 <form class="form-horizontal" action="{% url "pastebin:user_login" %}" method="POST">
     {% csrf_token %}
     

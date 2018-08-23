@@ -33,11 +33,12 @@ def main_page(request):
 
 def content_fetch(request,url_no):
     content_object=paste.objects.get(pk = url_no)
-    return render(request,"pastebin/fetching_content.html",{"content_object":content_object })
+    return render(request,"pastebin/fetching_content.html",{"content_object":content_object,"var3":url_no })
 
 def content_fetch_logged_in(request,url_no):
     content_object=paste_logged_in.objects.get(pk = url_no)
-    return render(request,"pastebin/fetching_content_logged_in.html",{"content_object":content_object }) 
+    usernam=request.user.username
+    return render(request,"pastebin/fetching_content_logged_in.html",{"content_object":content_object ,"var3":url_no,"username":usernam}) 
 
 
 def user_signup(request):
@@ -101,7 +102,21 @@ def user_logout(request):
     return HttpResponseRedirect(reverse("pastebin:main_page",))
 
 
-class pasteupdate(UpdateView):
-    model = input
-    fields = ['content', ]
-    template_name_suffix = '_update'
+def paste_edit(request,pk):
+    my_record = paste.objects.get(url=pk)
+    form = input(instance=my_record)
+    if request.method=="POST":
+        form = input(request.POST, instance=my_record)
+        form.save()
+        return HttpResponse("edited successfully")
+    return render(request,"pastebin/paste_edit.html",{"form":form,"pk":pk})
+
+def paste_edit_logged_in(request,pk):
+    my_record = paste_logged_in.objects.get(url=pk)
+    form = input_logged_in(instance=my_record)
+    if request.method=="POST":
+        form = input_logged_in(request.POST, instance=my_record)
+        form.save()
+        return HttpResponse("edited successfully")
+    return render(request,"pastebin/paste_edit_logged_in.html",{"form":form,"pk":pk}) 
+

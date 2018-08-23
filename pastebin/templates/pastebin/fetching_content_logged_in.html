@@ -1,10 +1,33 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% extends "pastebin/base.html" %}
+{% block main_content %}
+
+<nav class="navbar navbar-default" >
+                <div class="container">
+                <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>                        
+                              </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                    <li>  <a href="#!" class="active">welcome {{username}}</a>    </li>
+                 <li>  <a href="/pastebin/{{var3}}/edit_logged_in/">edit here</a></li>
+                 <li>  <a href="http://localhost:8000/pastebin/user_logout/" class="active">logout</a>    </li>
+
+
+                 
+                 </ul> 
+                </div>
+        </nav>
 
 <div class="container">
     <div style="text-align: center">
        <h1 style="margin-top: 4em;"> code you are looking for is here!<h1>
             
             {{content_object.content}}
-</div>
+</div><br> 
 
 </div>
+{% endblock %}
