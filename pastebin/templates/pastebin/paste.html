@@ -16,8 +16,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-         <li>  <a href="http://localhost:8000/pastebin/user_login/" class="active">login</a>    </li>
-         <li>   <a href="http://localhost:8000/pastebin/user_signup/" class="dropdown" >signup</a></li>
+         <li>  <a href="{% url "pastebin:user_login" %}" class="active">login</a>    </li>
+         <li>   <a href="{% url "pastebin:user_signup" %}" class="dropdown" >signup</a></li>
         
          </ul> 
         </div>
@@ -28,7 +28,7 @@
 <div class="container">
 <div class="row">
   <div class="col-sm-8">
-            <form class="form-horizontal" action="/pastebin/main_page/" method="POST">
+            <form class="form-horizontal" action="{% url "pastebin:main_page" %}" method="POST">
           
                 {% csrf_token %}
        {{ form.non_field_errors }}

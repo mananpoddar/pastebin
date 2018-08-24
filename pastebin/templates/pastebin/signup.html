@@ -83,7 +83,7 @@
 <div class="container">
     <div style="text-align: center">
        <h1 style="margin-top: 4em;"> SUCCESSFULLY REGISTERED!<h1>
-    <a href="http://127.0.0.1:8000/pastebin/main_page/" type="button" class="btn btn-primary"  > Go to Main Page!</a>
+    <a href="{% url "pastebin:main_page" %}" type="button" class="btn btn-primary"  > Go to Main Page!</a>
 </div>
 
 {% else %}
