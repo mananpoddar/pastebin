@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2b4#ehe##-g_px(ef4(vd_2&!4js@h*oh1rel9zt23*moan!d('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['mananm.pythonanywhere.com' ,]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pastebin.apps.PastebinConfig',
     'widget_tweaks',
-
+    'tinymce',
+    'ckeditor',
 
 ]
 
@@ -124,3 +125,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+CKEDITOR_BASEPATH = "/my_static/ckeditor/ckeditor"
+
